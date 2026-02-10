@@ -1,214 +1,1395 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <!-- 必须的 meta 标签 -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap 5 CSS 核心文件 (通过CDN引入，你无需下载) -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>肖轶悦 | 数字媒体艺术作品集</title>
+    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- 可选：Bootstrap图标库 -->
+    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-    <!-- 可在此添加一点点你自己的自定义样式（微调颜色、间距等） -->
+    <!-- Google字体 (可选，增加设计感) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #6f42c1; /* 可以修改此颜色值来改变网站主题色 */
+            --primary-purple: #8B5CF6;
+            --primary-blue: #3B82F6;
+            --dark-bg: #0F172A;
+            --light-bg: #F8FAFC;
+            --card-bg: #FFFFFF;
+            --text-primary: #1E293B;
+            --text-secondary: #64748B;
         }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            padding-top: 60px; /* 为顶部固定导航栏留出空间 */
-            font-family: -apple-system, 'Microsoft YaHei', sans-serif;
-            background-color: #f8f9fa;
+            font-family: 'Inter', -apple-system, 'Microsoft YaHei', sans-serif;
+            color: var(--text-primary);
+            background-color: var(--light-bg);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
-        .hero-section {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #0d6efd 100%);
+        
+        /* 导航栏 */
+        .navbar-custom {
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            padding: 1rem 0;
+        }
+        
+        .navbar-custom .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
             color: white;
-            padding: 4rem 0;
+        }
+        
+        .navbar-custom .nav-link {
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            margin: 0 0.5rem;
+            transition: color 0.3s;
+        }
+        
+        .navbar-custom .nav-link:hover {
+            color: var(--primary-purple);
+        }
+        
+        .navbar-custom .dropdown-menu {
+            background-color: rgba(15, 23, 42, 0.98);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .navbar-custom .dropdown-item {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .navbar-custom .dropdown-item:hover {
+            background-color: rgba(139, 92, 246, 0.2);
+            color: var(--primary-purple);
+        }
+        
+        /* 英雄区域 - 紫蓝渐变背景 */
+        .hero-section {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-blue) 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px; /* 为固定导航栏留出空间 */
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.03" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,192C672,181,768,139,864,128C960,117,1056,139,1152,149.3C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom center;
+            background-size: cover;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #FFFFFF 0%, #E2E8F0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        /* 通用内容区域 */
+        .content-section {
+            padding: 5rem 0;
+            background-color: var(--light-bg);
+        }
+        
+        .content-section:nth-child(even) {
+            background-color: white;
+        }
+        
+        .section-header {
+            text-align: center;
             margin-bottom: 3rem;
         }
-        .work-card {
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* 卡片设计 */
+        .portfolio-card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
             height: 100%;
+            border: 1px solid rgba(226, 232, 240, 0.5);
         }
-        .work-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+        
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
+        
+        .card-header {
+            padding: 1.5rem 1.5rem 0.5rem;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        /* 视频容器 */
         .video-container {
             position: relative;
             padding-bottom: 56.25%; /* 16:9 宽高比 */
             height: 0;
             overflow: hidden;
-            border-radius: .375rem .375rem 0 0; /* 与卡片顶部圆角匹配 */
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
         }
+        
         .video-container iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            border: 0;
+            border: none;
         }
-        .badge-custom {
-            background-color: #e9ecef;
-            color: #495057;
+        
+        /* 标签 */
+        .skill-tag {
+            display: inline-block;
+            background: linear-gradient(90deg, rgba(139, 92, 246, 0.1), rgba(59, 130, 246, 0.1));
+            color: var(--primary-purple);
+            padding: 0.4rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
         }
-        footer a {
-            color: inherit;
+        
+        /* 证书图片样式 */
+        .certificate-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        
+        .certificate-img:hover {
+            transform: scale(1.03);
+        }
+        
+        /* 时间轴样式 */
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 12px;
+            bottom: -2rem;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary-purple), var(--primary-blue));
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        
+        .timeline-date {
+            font-weight: 600;
+            color: var(--primary-purple);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* 联系信息样式 */
+        .contact-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        /* 页脚 */
+        .footer {
+            background-color: var(--dark-bg);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 0.5rem;
+            color: white;
             text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary-purple);
+            transform: translateY(-3px);
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .navbar-custom .navbar-nav {
+                text-align: center;
+                padding-top: 1rem;
+            }
         }
     </style>
-    <title>肖轶悦 - 数字媒体艺术作品集</title>
 </head>
 <body>
-    <!-- 导航栏 (固定在顶部) -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <i class="bi-controller me-2"></i>肖轶悦
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon">
+                    <i class="bi-list" style="color: white; font-size: 1.5rem;"></i>
+                </span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#works">作品</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">关于</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">联系</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">首页</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="gamesDropdown" role="button" data-bs-toggle="dropdown">
+                            游戏作品
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#game-demos">游戏Demo (6款)</a></li>
+                            <li><a class="dropdown-item" href="#ugc-maps">UGC地图 (3款)</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#ai-videos">AI视频创作</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#internship">实习经历</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#account-operation">账号运营</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#certificates">获奖证书</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">联系我</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- 个人简介 Hero 区域 -->
-    <header class="hero-section text-center">
+    <!-- 首页/英雄区域 -->
+    <section id="home" class="hero-section">
         <div class="container">
-            <img src="【请替换为你的头像图片URL，或删除本行】" class="rounded-circle mb-3" alt="头像" width="120" height="120" style="object-fit: cover;">
-            <h1 class="display-5 fw-bold">肖轶悦</h1>
-            <p class="lead">数字媒体艺术专业 | 游戏开发者 | 视频创作者</p>
-            <p class="mb-0">
-                <span class="badge bg-light text-dark me-1">Unreal Engine 5</span>
-                <span class="badge bg-light text-dark me-1">Unity</span>
-                <span class="badge bg-light text-dark me-1">Premiere Pro</span>
-                <span class="badge bg-light text-dark me-1">Stable Diffusion</span>
-                <span class="badge bg-light text-dark me-1">新媒体运营</span>
-            </p>
-        </div>
-    </header>
-
-    <!-- 作品展示区域 -->
-    <main class="container" id="works">
-        <h2 class="mb-4 border-bottom pb-2">作品展示</h2>
-
-        <!-- 作品 1 -->
-        <div class="row mb-5 align-items-stretch">
-            <div class="col-lg-8 mb-4 mb-lg-0">
-                <div class="card work-card h-100">
-                    <div class="video-container">
-                        <!-- ===【！！！替换点1：粘贴《冥途医录》的B站嵌入代码！！！】=== -->
-                        <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=113385307965687&bvid=BV1o117YNEDm&cid=26506953500&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-                    </div>
+            <div class="hero-content">
+                <h1 class="hero-title">肖轶悦</h1>
+                <p class="hero-subtitle">数字媒体艺术专业 | 游戏开发者 | 视频创作者 | 新媒体运营</p>
+                <div class="mt-4">
+                    <span class="badge bg-light text-dark me-1">Unreal Engine 5</span>
+                    <span class="badge bg-light text-dark me-1">Unity</span>
+                    <span class="badge bg-light text-dark me-1">游戏策划</span>
+                    <span class="badge bg-light text-dark me-1">3D建模</span>
+                    <span class="badge bg-light text-dark me-1">视频剪辑</span>
+                    <span class="badge bg-light text-dark me-1">AI创作</span>
+                    <span class="badge bg-light text-dark me-1">新媒体运营</span>
+                </div>
+                <div class="mt-5">
+                    <a href="#game-demos" class="btn btn-lg btn-light me-3">查看作品</a>
+                    <a href="#contact" class="btn btn-lg btn-light me-3">联系我</a>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="card work-card h-100">
-                    <div class="card-body d-flex flex-column">
+        </div>
+    </section>
+
+<!-- 游戏Demo区域 -->
+<section id="game-demos" class="content-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">游戏Demo作品</h2>
+            <p class="section-subtitle">涵盖RPG、模拟经营、FPS等多种类型的6款独立游戏，展示从策划、开发到运营的全流程能力</p>
+        </div>
+        
+        <div class="row g-4">
+            <!-- 游戏1 - 冥途医录（已有，保留） -->
+            <div class="col-lg-6">
+                <div class="portfolio-card">
+                    <div class="card-header">
                         <h3 class="card-title">《冥途医录》</h3>
-                        <p class="card-subtitle mb-2 text-muted">国风悬疑解谜游戏 Demo</p>
-                        <hr>
-                        <p class="card-text flex-grow-1"><strong>项目描述：</strong>一款使用UE5开发的独立游戏，玩家扮演医师在悬疑剧情中运用中医知识解谜。</p>
-                        <p class="card-text"><strong>我的职责：</strong>核心程序、玩法策划、部分模型渲染、宣传视频制作与运营。</p>
-                        <p class="card-text"><strong>关键技术：</strong>Unreal Engine 5 (蓝图/C++)， Blender， Substance Painter。</p>
-                        <div class="mt-auto">
-                            <p class="card-text"><strong>主要成果：</strong></p>
-                            <ul class="ps-3">
-                                <li><strong>2024年吉林省大学生游戏设计大赛一等奖</strong></li>
-                                <li>获TapTap平台“编辑推荐”，累计预约/下载量 5k+</li>
-                                <li>独立负责的B站宣传视频播放量 10w+</li>
+                        <p class="card-subtitle">国风RPG类游戏 | TapTap已上线</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="video-container">
+                            <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=113385307965687&bvid=BV1o117YNEDm&cid=26506953500&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+                        </div>
+                        <p><strong>项目简介：</strong>一款使用星火编辑器开发的国风RPG游戏，玩家将扮演医者，在乱世中解谜破局、济世救人。</p>
+                        <p><strong>我的职责：</strong>主策划、程序开发、宣传视频制作与全平台运营。</p>
+                        <div class="mt-3">
+                            <span class="skill-tag">星火编辑器</span>
+                            <span class="skill-tag">SCE Game SDK</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">视频制作</span>
+                            <span class="skill-tag">游戏策划</span>
+                            <span class="skill-tag">TapTap运营</span>
+                        </div>
+                        <div class="mt-3">
+                            <p><strong>成果与奖项：</strong></p>
+                            <ul>
+                               
+                                <li>TapTap平台累计游玩量5000+</li>
+                                <li>参加TapTap聚光灯挑战赛</li>
+
                             </ul>
-                            <div class="mt-3">
-                                <span class="badge badge-custom me-1 mb-1">#游戏开发</span>
-                                <span class="badge badge-custom me-1 mb-1">#UE5</span>
-                                <span class="badge badge-custom me-1 mb-1">#独立游戏</span>
-                                <span class="badge badge-custom me-1 mb-1">#策划</span>
-                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 游戏2 - 字速厨房 -->
+            <div class="col-lg-6">
+                <div class="portfolio-card">
+                    <div class="card-header">
+                        <h3 class="card-title">《字速厨房》</h3>
+                        <p class="card-subtitle">功能类打字游戏 | 全国竞赛获奖作品</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="video-container">
+                            <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=116029715908103&bvid=BV1PTF4zYE3h&cid=35893152916&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+                        </div>
+                        <p><strong>项目简介：</strong>一款基于Unity开发的"实用技能提升+沉浸式趣味体验"功能型打字游戏，打破传统打字训练的枯燥壁垒。玩家化身为忙碌厨师，在烹饪场景中通过快速准确输入文字指令完成菜品制作。</p>
+                        <p><strong>我的职责：</strong>主策划、程序开发、视频制作。</p>
+                        <div class="mt-3">
+                            <span class="skill-tag">Unity</span>
+                            <span class="skill-tag">C#</span>
+                            <span class="skill-tag">打字算法</span>
+                            <span class="skill-tag">游戏策划</span>
+                            <span class="skill-tag">视频制作</span>
+                        </div>
+                        <div class="mt-3">
+                            <p><strong>成果与奖项：</strong></p>
+                            <ul>
+                                <li><strong>2025（第十三届）CMIT全国大学生数字媒体科技作品及创意竞赛 全国总决赛 三等奖</strong></li>
+                                <li><strong>2025（第十三届）CMIT全国大学生数字媒体科技作品及创意竞赛 吉林赛区 二等奖</strong></li>
+                                <li>游戏将打字训练与烹饪流程深度绑定，实现"娱乐中练技能，体验中长能力"的设计目标</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 游戏3 - 蛞蝓猫猫SlugCat -->
+            <div class="col-lg-6">
+                <div class="portfolio-card">
+                    <div class="card-header">
+                        <h3 class="card-title">《蛞蝓猫猫SlugCat》</h3>
+                        <p class="card-subtitle">像素风2D平面游戏 | 环境保护主题</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="video-container">
+                            <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=116029799792739&bvid=BV1dWF4zDExh&cid=35893677228&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+                        </div>
+                        <p><strong>项目简介：</strong>一款以保护环境、关爱动物为主题的像素风休闲游戏。玩家操控猫咪在受污染的场景中移动，躲避废旧工厂产生的障碍物，最终拯救猫猫。</p>
+                        <p><strong>我的职责：</strong>程序开发、游戏策划、视频制作。</p>
+                        <div class="mt-3">
+                            <span class="skill-tag">Unity</span>
+                            <span class="skill-tag">C#</span>
+                            <span class="skill-tag">2D游戏开发</span>
+                            <span class="skill-tag">游戏策划</span>
+                            <span class="skill-tag">视频制作</span>
+                        </div>
+                        <div class="mt-3">
+                            <p><strong>成果与奖项：</strong></p>
+                            <ul>
+                                <li><strong>2025年第13届未来设计师·全国高校数字艺术设计大赛 吉林赛区 一等奖</strong></li>
+                                <li>通过轻松有趣的游戏体验，引发玩家对环境保护和动物保护的关注与思考</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 游戏4 - 厨师日志：砂锅米线的环球之旅 -->
+            <div class="col-lg-6">
+                <div class="portfolio-card">
+                    <div class="card-header">
+                        <h3 class="card-title">《厨师日志：砂锅米线的环球之旅》</h3>
+                        <p class="card-subtitle">模拟经营类游戏 | 美食文化主题</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="video-container">
+                            <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=116029783081304&bvid=BV1LxF4znEL7&cid=35893609504&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+                        </div>
+                        <p><strong>项目简介：</strong>一款模拟经营游戏，讲述一名热爱砂锅米线的厨师从一个小餐车奋斗成火爆全球连锁店的故事。玩家扮演厨师，在不同国家奋斗，让砂锅米线铺设全世界。</p>
+                        <p><strong>我的职责：</strong>程序开发、主策划、动画制作、服装模型制作、视频制作。</p>
+                        <div class="mt-3">
+                            <span class="skill-tag">Unity</span>
+                            <span class="skill-tag">C#</span>
+                            <span class="skill-tag">3D建模</span>
+                            <span class="skill-tag">动画制作</span>
+                            <span class="skill-tag">模拟经营系统</span>
+                            <span class="skill-tag">游戏策划</span>
+                        </div>
+                        <div class="mt-3">
+                            <p><strong>成果与特色：</strong></p>
+                            <ul>
+                                <li>完整的实现了经营、成长、游戏支付程序等系统</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 游戏5 - 守岁更夫 -->
+            <div class="col-lg-6">
+                <div class="portfolio-card">
+                    <div class="card-header">
+                        <h3 class="card-title">《守岁更夫》</h3>
+                        <p class="card-subtitle">国风FPS类游戏 | 除夕夜主题</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="video-container">
+                            <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=116029749461010&bvid=BV1opF4zHEut&cid=35893349663&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+                        </div>
+                        <p><strong>项目简介：</strong>一款充满奇幻色彩与传统节日韵味的国风FPS游戏。玩家扮演家族中初出茅庐的巡夜更夫，在除夕夜临近时守护一方平安，对抗悄然涌动的暗流。</p>
+                        <p><strong>我的职责：</strong>主策划、程序开发、道具模型制作、地编、视频制作。</p>
+                        <div class="mt-3">
+                            <span class="skill-tag">Unity</span>
+                            <span class="skill-tag">C#</span>
+                            <span class="skill-tag">FPS系统</span>
+                            <span class="skill-tag">3D建模</span>
+                            <span class="skill-tag">场景地编</span>
+                            <span class="skill-tag">游戏策划</span>
+                        </div>
+                        <div class="mt-3">
+                            <p><strong>成果与特色：</strong></p>
+                            <ul>
+                                <li>将中国传统文化元素与现代FPS玩法相结合</li>
+                                <li>营造浓厚的传统节日氛围与紧张的游戏节奏</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 游戏6 - 毕设：坠入不咸山 -->
+            <div class="col-lg-6">
+                <div class="portfolio-card">
+                    <div class="card-header">
+                        <h3 class="card-title">《不咸山》</h3>
+                        <p class="card-subtitle">国风奇幻RPG冒险游戏 | 毕业设计作品</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="video-container">
+                            <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=116029850124329&bvid=BV1ZJF4zWEib&cid=35893939249&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+                        </div>
+                        <p><strong>项目简介：</strong>毕业设计作品，一款国风奇幻RPG冒险游戏。玩家将探索神秘的不咸山，解开古老的秘密，体验一段充满东方奇幻色彩的冒险旅程。</p>
+                        <p><strong>我的职责：</strong>程序开发、主策划、动画制作、角色绑定、视频制作。</p>
+                        <div class="mt-3">
+                            <span class="skill-tag">Unity</span>
+                            <span class="skill-tag">C#</span>
+                            <span class="skill-tag">RPG系统</span>
+                            <span class="skill-tag">动画制作</span>
+                            <span class="skill-tag">角色绑定</span>
+                            <span class="skill-tag">游戏策划</span>
+                        </div>
+                        <div class="mt-3">
+                            <p><strong>成果与特色：</strong></p>
+                            <ul>
+                                <li>作为毕业设计作品，展现了全面的游戏开发能力</li>
+                                <li>构建了完整的RPG系统与角色成长体系</li>
+                                <li>融合中国神话元素，创造独特的国风奇幻世界</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- 作品 2 (结构复制即可) -->
-        <div class="row mb-5 align-items-stretch">
-            <div class="col-lg-8 mb-4 mb-lg-0">
-                <div class="card work-card h-100">
-                    <div class="video-container">
-                        <!-- ===【！！！替换点2：粘贴下一个作品的B站嵌入代码！！！】=== -->
-                        <iframe src="//player.bilibili.com/player.html?bvid=BV1px411x7xx&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-                    </div>
-                </div>
+                
+        
+            <div class="text-center mt-5">
+                <p>更多游戏Demo作品正在整理中，持续更新...</p>
             </div>
+        </div>
+    </section>
+
+<!-- ========================= 从这里开始复制 ========================= -->
+<!-- UGC地图区域 - 带自动轮播的新版本 -->
+<section id="ugc-maps" class="content-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">UGC地图创作</h2>
+            <p class="section-subtitle">在《元梦之星》和《蛋仔派对》中创作并发布的玩法地图，展示对玩家心理与游戏机制的理解</p>
+        </div>
+        
+        <div class="row g-4">
+            <!-- 作品1 - 元梦拜月记 -->
             <div class="col-lg-4">
-                <div class="card work-card h-100">
-                    <div class="card-body d-flex flex-column">
-                        <h3 class="card-title">《结构梦境》</h3>
-                        <p class="card-subtitle mb-2 text-muted">AI生成数字艺术短片</p>
-                        <hr>
-                        <p class="card-text flex-grow-1"><strong>项目描述：</strong>为“数字艺术双研展”创作的实验短片，探索AI绘画与关键帧动画的结合。</p>
-                        <p class="card-text"><strong>我的职责：</strong>使用AI工具生成并筛选基底素材，完成关键帧绘制、视频合成与特效。</p>
-                        <p class="card-text"><strong>关键技术：</strong>Stable Diffusion, After Effects, Photoshop。</p>
-                        <div class="mt-auto">
-                            <p class="card-text"><strong>主要成果：</strong></p>
-                            <ul class="ps-3">
-                                <li>作品入选吉林艺术学院“数字艺术双研展”</li>
-                                <li>短片作为开场展映，获得院内师生关注</li>
+                <div class="portfolio-card">
+                    <div class="card-header">
+                        <h3 class="card-title">「拜月记：戏剧台前幕后」</h3>
+                        <p class="card-subtitle">《元梦之星》 | 戏剧模拟地图</p>
+                    </div>
+                    <div class="card-body">
+                        <!-- 图片轮播容器 -->
+                        <div class="video-container swiper mapSwiper1">
+                            <div class="swiper-wrapper">
+                                <!-- 第1-9张图 -->
+                                <div class="swiper-slide">
+                                    <img src="https://raw.githubusercontent.com/shanadan0/shanadan0.github.io/main/images/%E5%85%83%E6%A2%A6%E6%8B%9C%E6%9C%88%E8%AE%B0%20(1).png" alt="元梦拜月记截图1">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://raw.githubusercontent.com/shanadan0/shanadan0.github.io/main/images/%E5%85%83%E6%A2%A6%E6%8B%9C%E6%9C%88%E8%AE%B0%20(2).png" alt="元梦拜月记截图2">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://raw.githubusercontent.com/shanadan0/shanadan0.github.io/main/images/%E5%85%83%E6%A2%A6%E6%8B%9C%E6%9C%88%E8%AE%B0%20(3).png" alt="元梦拜月记截图3">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://raw.githubusercontent.com/shanadan0/shanadan0.github.io/main/images/%E5%85%83%E6%A2%A6%E6%8B%9C%E6%9C%88%E8%AE%B0%20(4).png" alt="元梦拜月记截图4">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://raw.githubusercontent.com/shanadan0/shanadan0.github.io/main/images/%E5%85%83%E6%A2%A6%E6%8B%9C%E6%9C%88%E8%AE%B0%20(5).png" alt="元梦拜月记截图5">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://raw.githubusercontent.com/shanadan0/shanadan0.github.io/main/images/%E5%85%83%E6%A2%A6%E6%8B%9C%E6%9C%88%E8%AE%B0%20(6).png" alt="元梦拜月记截图6">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://raw.githubusercontent.com/shanadan0/shanadan0.github.io/main/images/%E5%85%83%E6%A2%A6%E6%8B%9C%E6%9C%88%E8%AE%B0%20(7).png" alt="元梦拜月记截图7">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://raw.githubusercontent.com/shanadan0/shanadan0.github.io/main/images/%E5%85%83%E6%A2%A6%E6%8B%9C%E6%9C%88%E8%AE%B0%20(8).png" alt="元梦拜月记截图8">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://raw.githubusercontent.com/shanadan0/shanadan0.github.io/main/images/%E5%85%83%E6%A2%A6%E6%8B%9C%E6%9C%88%E8%AE%B0%20(9).png" alt="元梦拜月记截图9">
+                                </div>
+                            </div>
+                            <!-- 分页小圆点 -->
+                            <div class="swiper-pagination"></div>
+                        </div>
+                        
+                        <p><strong>地图特色：</strong>以拜月记为主题，融合传统元素与现代关卡设计，让玩家在指尖互动中触摸戏韵绵长的文化底蕴。</p>
+                        <p><strong>我的职责：</strong>程序开发、主策划、UI美术。</p>
+                        <p><strong>成果与奖项：</strong></p>
+                            <ul>
+                                <li><strong>《元梦之星》第二届全国高校游戏创意大赛  UGC创意赛道 最佳创意玩法奖</strong></li>
+                                <li><strong>数据表现：</strong>上线游玩次数15万+，点赞数8000+，评级“神图”【巧思神作】</li>
+                                <li>被官方推荐至栏目【闯关夺宝】</li>
                             </ul>
+                    
+                        <div class="mt-3">
+                            <span class="skill-tag">国风设计</span>
+                            <span class="skill-tag">解谜关卡</span>
+                            <span class="skill-tag">元梦之星编辑器</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 作品2 - 元梦长白山 -->
+            <div class="col-lg-4">
+                <div class="portfolio-card">
+                    <div class="card-header">
+                        <h3 class="card-title">「我在长白山挖人参」</h3>
+                        <p class="card-subtitle">《元梦之星》 | 创意玩法地图</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="video-container swiper mapSwiper2">
+                            <div class="swiper-wrapper">
+                                <!-- 第1-9张图 -->
+                                <div class="swiper-slide">
+                                    <img src="https://raw.githubusercontent.com/shanadan0/shanadan0.github.io/main/images/%E5%85%83%E6%A2%A6%E9%95%BF%E7%99%BD%E5%B1%B1%20%20(1).png" alt="元梦长白山截图1">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://raw.githubusercontent.com/shanadan0/shanadan0.github.io/main/images/%E5%85%83%E6%A2%A6%E9%95%BF%E7%99%BD%E5%B1%B1%20%20(2).png" alt="元梦长白山截图2">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://raw.githubusercontent.com/shanadan0/shanadan0.github.io/main/images/%E5%85%83%E6%A2%A6%E9%95%BF%E7%99%BD%E5%B1%B1%20%20(3).png" alt="元梦长白山截图3">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://raw.githubusercontent.com/shanadan0/shanadan0.github.io/main/images/%E5%85%83%E6%A2%A6%E9%95%BF%E7%99%BD%E5%B1%B1%20%20(4).png" alt="元梦长白山截图4">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://raw.githubusercontent.com/shanadan0/shanadan0.github.io/main/images/%E5%85%83%E6%A2%A6%E9%95%BF%E7%99%BD%E5%B1%B1%20%20(5).png" alt="元梦长白山截图5">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://raw.githubusercontent.com/shanadan0/shanadan0.github.io/main/images/%E5%85%83%E6%A2%A6%E9%95%BF%E7%99%BD%E5%B1%B1%20%20(6).png" alt="元梦长白山截图6">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://raw.githubusercontent.com/shanadan0/shanadan0.github.io/main/images/%E5%85%83%E6%A2%A6%E9%95%BF%E7%99%BD%E5%B1%B1%20%20(7).png" alt="元梦长白山截图7">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://raw.githubusercontent.com/shanadan0/shanadan0.github.io/main/images/%E5%85%83%E6%A2%A6%E9%95%BF%E7%99%BD%E5%B1%B1%20%20(8).png" alt="元梦长白山截图8">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://raw.githubusercontent.com/shanadan0/shanadan0.github.io/main/images/%E5%85%83%E6%A2%A6%E9%95%BF%E7%99%BD%E5%B1%B1%20%20(9).png" alt="元梦长白山截图9">
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                        
+                        <p><strong>地图特色：</strong>将长白山挖人参放山习俗与游戏结合，让更多人了解传统文化的魅力。</p>
+                        <p><strong>我的职责：</strong>程序开发、主策划、地编。</p>
+                        <p><strong>成果与奖项：</strong></p>
+                            <ul>
+                                <li><strong>《元梦之星》第二届全国高校游戏创意大赛  UGC创意赛道 复赛入围</strong></li>
+                                <li><strong>数据表现：</strong>上线游玩次数1万+，点赞数400+，评级“佳作”【巧思神作】</li>
+                            </ul>
+                        <div class="mt-3">
+                            <span class="skill-tag">自然景观</span>
+                            <span class="skill-tag">探险玩法</span>
+                            <span class="skill-tag">环境叙事</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 作品3 - 蛋仔太空站 -->
+            <div class="col-lg-4">
+                <div class="portfolio-card">
+                    <div class="card-header">
+                        <h3 class="card-title">「太空漫游之科技太空站」</h3>
+                        <p class="card-subtitle">《蛋仔派对》 | 科幻观赏地图</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="video-container swiper mapSwiper3">
+                            <div class="swiper-wrapper">
+                                <!-- 第1-7张图 -->
+                                <div class="swiper-slide">
+                                    <img src="https://raw.githubusercontent.com/shanadan0/shanadan0.github.io/main/images/%E8%9B%8B%E4%BB%94%E5%A4%AA%E7%A9%BA%E7%AB%99%20(1).jpg" alt="蛋仔太空站截图1">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://raw.githubusercontent.com/shanadan0/shanadan0.github.io/main/images/%E8%9B%8B%E4%BB%94%E5%A4%AA%E7%A9%BA%E7%AB%99%20(2).jpg" alt="蛋仔太空站截图2">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://raw.githubusercontent.com/shanadan0/shanadan0.github.io/main/images/%E8%9B%8B%E4%BB%94%E5%A4%AA%E7%A9%BA%E7%AB%99%20(3).jpg" alt="蛋仔太空站截图3">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://raw.githubusercontent.com/shanadan0/shanadan0.github.io/main/images/%E8%9B%8B%E4%BB%94%E5%A4%AA%E7%A9%BA%E7%AB%99%20(4).jpg" alt="蛋仔太空站截图4">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://raw.githubusercontent.com/shanadan0/shanadan0.github.io/main/images/%E8%9B%8B%E4%BB%94%E5%A4%AA%E7%A9%BA%E7%AB%99%20(5).jpg" alt="蛋仔太空站截图5">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://raw.githubusercontent.com/shanadan0/shanadan0.github.io/main/images/%E8%9B%8B%E4%BB%94%E5%A4%AA%E7%A9%BA%E7%AB%99%20(6).jpg" alt="蛋仔太空站截图6">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://raw.githubusercontent.com/shanadan0/shanadan0.github.io/main/images/%E8%9B%8B%E4%BB%94%E5%A4%AA%E7%A9%BA%E7%AB%99%20(7).jpg" alt="蛋仔太空站截图7">
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                        
+                        <p><strong>地图特色：</strong>以中国空间站进行设计制作，包含生活、科技、外太空旅行等玩法</p>
+                        <p><strong>我的职责：</strong>程序开发、主策划、地编。</p>
+                        <p><strong>成果与奖项：</strong></p>
+                            <ul>
+                                <li>参与蛋码高校创作赛</li>
+                                <li><strong>数据表现：</strong>上线游玩次数2000+</li>
+                            </ul>
+                        <div class="mt-3">
+                            <span class="skill-tag">科幻设计</span>
+                            <span class="skill-tag">空间站</span>
+                            <span class="skill-tag">蛋仔派对编辑器</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 轮播初始化脚本 -->
+<script>
+    // 等页面全部加载完再初始化轮播
+    document.addEventListener('DOMContentLoaded', function() {
+        // 检查Swiper库是否已加载
+        if (typeof Swiper === 'undefined') {
+            console.error('Swiper库未加载，正在动态加载...');
+            // 动态加载Swiper CSS
+            const swiperCSS = document.createElement('link');
+            swiperCSS.rel = 'stylesheet';
+            swiperCSS.href = 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css';
+            document.head.appendChild(swiperCSS);
+            
+            // 动态加载Swiper JS
+            const swiperJS = document.createElement('script');
+            swiperJS.src = 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js';
+            swiperJS.onload = initializeSwipers;
+            document.head.appendChild(swiperJS);
+        } else {
+            initializeSwipers();
+        }
+        
+        function initializeSwipers() {
+            // 初始化第一个轮播 (元梦拜月记)
+            new Swiper('.mapSwiper1', {
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true, // 鼠标悬停暂停
+                },
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                speed: 600,
+                effect: 'slide',
+            });
+            
+            // 初始化第二个轮播 (元梦长白山)
+            new Swiper('.mapSwiper2', {
+                autoplay: {
+                    delay: 3200,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                },
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                speed: 600,
+                effect: 'slide',
+            });
+            
+            // 初始化第三个轮播 (蛋仔太空站)
+            new Swiper('.mapSwiper3', {
+                autoplay: {
+                    delay: 3500,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                },
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                speed: 600,
+                effect: 'slide',
+            });
+            
+            console.log('所有轮播已初始化完成');
+        }
+    });
+</script>
+
+<!-- 添加Swiper基础样式 -->
+<style>
+    .swiper {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #000;
+    }
+    
+    .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .swiper-pagination-bullet {
+        width: 10px;
+        height: 10px;
+        background: rgba(255, 255, 255, 0.5);
+        opacity: 1;
+    }
+    
+    .swiper-pagination-bullet-active {
+        background: var(--primary-purple);
+    }
+</style>
+<!-- ========================= 复制到这里结束 ========================= -->    <!-- AI视频创作区域 -->
+    <section id="ai-videos" class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">AI视频创作</h2>
+                <p class="section-subtitle">结合Stable Diffusion等AI工具与专业视频剪辑技术，创作高质量数字艺术视频</p>
+            </div>
+            
+            <div class="row g-4">
+                <!-- AI视频1 -->
+                <div class="col-lg-6">
+                    <div class="portfolio-card">
+                        <div class="card-header">
+                            <h3 class="card-title">《结构梦境》</h3>
+                            <p class="card-subtitle">AI生成数字艺术短片 | 数字艺术双研展参展作品</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="video-container">
+                                <!-- 替换为你的B站视频嵌入代码 -->
+                                <iframe src="https://player.bilibili.com/player.html?bvid=BV1px411x7xx&page=1" allowfullscreen></iframe>
+                            </div>
+                            <p><strong>创作过程：</strong>使用Stable Diffusion生成300+张概念图，通过ControlNet控制画面一致性，结合After Effects完成动态设计与合成。</p>
+                            <p><strong>技术要点：</strong>LoRA模型训练、提示词工程、关键帧动画、镜头运动设计。</p>
                             <div class="mt-3">
-                                <span class="badge badge-custom me-1 mb-1">#AI创作</span>
-                                <span class="badge badge-custom me-1 mb-1">#动态设计</span>
-                                <span class="badge badge-custom me-1 mb-1">#StableDiffusion</span>
-                                <span class="badge badge-custom me-1 mb-1">#数字艺术</span>
+                                <span class="skill-tag">Stable Diffusion</span>
+                                <span class="skill-tag">ControlNet</span>
+                                <span class="skill-tag">After Effects</span>
+                                <span class="skill-tag">动态设计</span>
+                            </div>
+                            <div class="mt-3">
+                                <p><strong>成果：</strong>作品入选吉林艺术学院"学科建设质量提升年"数字艺术双研展，作为开场展映作品。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- AI视频2 -->
+                <div class="col-lg-6">
+                    <div class="portfolio-card">
+                        <div class="card-header">
+                            <h3 class="card-title">《春风十万里》</h3>
+                            <p class="card-subtitle">AI辅助校庆宣传视频 | 吉林艺术学院75周年校庆</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="video-container">
+                                <!-- 替换为你的B站视频嵌入代码 -->
+                                <iframe src="https://player.bilibili.com/player.html?bvid=BV1xx411x7xx&page=1" allowfullscreen></iframe>
+                            </div>
+                            <p><strong>创作过程：</strong>结合校史资料与AI图像生成，创作具有历史感与现代感交融的视觉画面，配合原创音乐完成视频制作。</p>
+                            <p><strong>技术要点：</strong>历史风格LoRA训练、画面风格统一、蒙版跟踪、色彩分级。</p>
+                            <div class="mt-3">
+                                <span class="skill-tag">AI视频生成</span>
+                                <span class="skill-tag">Premiere Pro</span>
+                                <span class="skill-tag">DaVinci Resolve</span>
+                                <span class="skill-tag">调色</span>
+                            </div>
+                            <div class="mt-3">
+                                <p><strong>成果：</strong>作为校庆文艺演出开场视频，获得师生一致好评，视频在校内平台播放量5万+。</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- 你可以继续复制上面整个 `row` 区块来添加更多作品 -->
-    </main>
+    </section>
 
-    <!-- 关于 & 联系区域 -->
-    <section class="container py-5" id="about">
-        <div class="row">
-            <div class="col-md-6" id="contact">
-                <h3>联系我</h3>
-                <ul class="list-unstyled">
-                    <li class="mb-2"><i class="bi-telephone me-2"></i> 电话：13142312660</li>
-                    <li class="mb-2"><i class="bi-envelope me-2"></i> 邮箱：2564824725@qq.com</li>
-                    <li class="mb-2"><i class="bi-bilibili me-2"></i> B站：<a href="【你的B站主页链接】" target="_blank">嬗阿单 (38.3万播放)</a></li>
-                    <li class="mb-2"><i class="bi-github me-2"></i> GitHub：<a href="【你的GitHub主页链接】" target="_blank">【你的GitHub用户名】</a></li>
-                </ul>
+    <!-- 实习经历区域 -->
+    <section id="internship" class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">实习经历</h2>
+                <p class="section-subtitle">在芒果TV媒资管理部门为期3个月的实习，深入了解大型媒体平台的内容管理与运营流程</p>
             </div>
-            <div class="col-md-6">
-                <h3>关于这个作品集</h3>
-                <p>这个页面使用 <strong>Bootstrap 5</strong> 框架构建，通过 <strong>GitHub Pages</strong> 服务托管。旨在清晰、直观地展示我的视频与交互作品。</p>
-                <p>所有展示的项目均为我个人主导或深度参与完成，代表了我在游戏开发、数字内容创作与项目管理方面的能力。</p>
-                <p>期待与您合作！</p>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="portfolio-card">
+                        <div class="card-header">
+                            <h3 class="card-title">芒果TV - 媒资管理部门</h3>
+                            <p class="card-subtitle">实习生 | 2025年1月 - 2025年3月</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="timeline-item">
+                                <div class="timeline-date">内容审核与分类</div>
+                                <p>协助完成每日新增视频内容的审核、打标与分类工作，学习大型平台内容管理规范与标准。</p>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-date">媒资元数据整理</div>
+                                <p>参与完善媒资库元数据体系，对节目资料进行数字化整理与关键词标注，提升检索效率。</p>
+                            </div>
+                            
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-date">跨部门协作项目</div>
+                                <p>与多方部门沟通协作，完成数据库录入。</p>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <h5>实习收获</h5>
+                                <ul>
+                                    <li>深入了解大型流媒体平台的内部运作机制与内容管理流程</li>
+                                    <li>掌握媒资管理系统的基本操作与元数据标准</li>
+                                    <li>学习跨部门协作与沟通技巧</li>
+                                    <li>将学校所学理论知识应用于实际工作场景</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 账号运营区域 -->
+    <section id="account-operation" class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">账号运营</h2>
+                <p class="section-subtitle">运营个人新媒体账号，展示视频剪辑、内容策划与用户增长能力</p>
+            </div>
+            
+            <div class="row g-4">
+    <!-- 主要账号 -->
+    <div class="col-lg-8">
+        <div class="portfolio-card">
+            <div class="card-header">
+                <h3 class="card-title">B站账号：嬗阿单</h3>
+                <p class="card-subtitle">游戏解说/剪辑/原创视频 | 主力运营账号</p>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="video-container">
+                            <!-- 替换为你的B站代表性视频嵌入代码 -->
+                            <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=496456397&bvid=BV1eK411e74K&cid=1412357316&p=1" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>账号数据</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="bi-play-circle me-2"></i>累计播放：<strong>42.5万</strong></li>
+                            <li class="mb-2"><i class="bi-film me-2"></i>视频数量：<strong>118个</strong></li>
+                        </ul>
+                      
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <h5>运营策略与成果</h5>
+                    <ul>
+                        <li><strong>内容定位：</strong>专注于游戏解说、创意剪辑与开发幕后分享</li>
+                        <li><strong>爆款内容：</strong>《这个游戏到底谁在赢啊》视频播放量达17万+</li>
+                    </ul>
+                </div>
+                
+                <div class="mt-3">
+                    <span class="skill-tag">视频剪辑</span>
+                    <span class="skill-tag">游戏实况</span>
+                </div>
+
+                  <a href="https://space.bilibili.com/524419812?spm_id_from=333.337.0.0" target="_blank" class="btn btn-primary w-100 mt-3">访问B站主页</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 次要账号 -->
+    <div class="col-lg-4">
+        <div class="portfolio-card">
+            <div class="card-header">
+                <h3 class="card-title">B站账号：味界播报online</h3>
+                <p class="card-subtitle">美食/生活方式内容 | 实验性运营</p>
+            </div>
+            <div class="card-body">
+                <div class="video-container">
+                    <!-- 替换为你的次要账号代表性视频嵌入代码 -->
+                    <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=112868888544065&bvid=BV1PYvKeuESw&cid=500001631298720&p=1" allowfullscreen></iframe>
+                </div>
+
+                <div class="mt-3">
+                    <h5>账号数据</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi-play-circle me-2"></i>累计播放：<strong>2000+</strong></li>
+                        <li class="mb-2"><i class="bi-film me-2"></i>视频数量：<strong>11个</strong></li>
+                    </ul>
+
+                </div>
+
+                <div class="mt-4">
+                    <h5>运营策略与成果</h5>
+                    <ul>
+                        <li><strong>账号定位：</strong>探索动画美食与生活方式领域，尝试不同的内容风格与运营方法。</li>
+                        <li><strong>运营心得：</strong>通过此账号的实验性运营，学习了不同垂直领域的内容特点与用户偏好，验证了多种内容策略的有效性。</li>
+                    </ul>
+                </div>
+
+                <div class="mt-3">
+                    <span class="skill-tag">内容实验</span>
+                    <span class="skill-tag">多领域尝试</span>
+                    <span class="skill-tag">用户分析</span>
+                </div>
+
+                <a href="https://space.bilibili.com/3546615910500420?spm_id_from=333.1387.0.0" target="_blank" class="btn btn-primary w-100 mt-3">访问B站主页</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </section>
+
+    <!-- 获奖证书区域 -->
+    <section id="certificates" class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">获奖与证书</h2>
+                <p class="section-subtitle">在校期间获得的奖项、证书与荣誉</p>
+            </div>
+            
+            <div class="row g-4">
+                <!-- 证书1 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="portfolio-card">
+                        <div class="card-body text-center">
+                            <div class="mb-3">
+                                <i class="bi-trophy-fill" style="font-size: 3rem; color: #FFD700;"></i>
+                            </div>
+                            <h5>2022学年校一等奖学金</h5>
+                            <p class="text-muted">吉林艺术学院</p>
+                            <p>表彰学业成绩优异，位列专业前5%</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 证书2 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="portfolio-card">
+                        <div class="card-body text-center">
+                            <div class="mb-3">
+                                <i class="bi-award-fill" style="font-size: 3rem; color: var(--primary-purple);"></i>
+                            </div>
+                            <h5>2022学年优秀班干部</h5>
+                            <p class="text-muted">吉林艺术学院</p>
+                            <p>担任22级新媒体娱乐一班班长，工作获得认可</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 证书3 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="portfolio-card">
+                        <div class="card-body text-center">
+                            <div class="mb-3">
+                                <i class="bi-heart-fill" style="font-size: 3rem; color: #FF6B6B;"></i>
+                            </div>
+                            <h5>星语阳光优秀志愿者</h5>
+                            <p class="text-muted">美术学院</p>
+                            <p>积极参与志愿活动，服务时长累计80+小时</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 证书4 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="portfolio-card">
+                        <div class="card-body text-center">
+                            <div class="mb-3">
+                                <i class="bi-translate" style="font-size: 3rem; color: var(--primary-blue);"></i>
+                            </div>
+                            <h5>大学英语四级 (CET-4)</h5>
+                            <p class="text-muted">全国大学英语四六级考试委员会</p>
+                            <p>具备良好的英语阅读与理解能力</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 证书图片展示 -->
+            <div class="mt-5">
+                <h4 class="text-center mb-4">证书图片展示</h4>
+                <div class="row g-3">
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <img src="【证书图片1URL】" alt="校一等奖学金证书" class="certificate-img">
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <img src="【证书图片2URL】" alt="优秀班干部证书" class="certificate-img">
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <img src="【证书图片3URL】" alt="志愿者证书" class="certificate-img">
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <img src="【证书图片4URL】" alt="英语四级证书" class="certificate-img">
+                    </div>
+                </div>
+                <p class="text-center text-muted mt-3">更多获奖证书正在数字化整理中...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系区域 -->
+    <section id="contact" class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">联系我</h2>
+                <p class="section-subtitle">期待与您合作，共同创造精彩的作品</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="portfolio-card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="contact-info">
+                                        <div class="contact-icon">
+                                            <i class="bi-telephone"></i>
+                                        </div>
+                                        <div>
+                                            <h5>电话</h5>
+                                            <p>13142312660</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="contact-info">
+                                        <div class="contact-icon">
+                                            <i class="bi-envelope"></i>
+                                        </div>
+                                        <div>
+                                            <h5>邮箱</h5>
+                                            <p>2564824725@qq.com</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="contact-info">
+                                        <div class="contact-icon">
+                                            <i class="bi-geo-alt"></i>
+                                        </div>
+                                        <div>
+                                            <h5>地址</h5>
+                                            <p>湖南省衡阳市石鼓区望城路</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="contact-info">
+                                        <div class="contact-icon">
+                                            <i class="bi-bilibili"></i>
+                                        </div>
+                                        <div>
+                                            <h5>B站主页</h5>
+                                            <p><a href="【你的B站主页链接】" target="_blank">嬗阿单 (38.3万播放)</a></p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="contact-info">
+                                        <div class="contact-icon">
+                                            <i class="bi-github"></i>
+                                        </div>
+                                        <div>
+                                            <h5>GitHub</h5>
+                                            <p><a href="【你的GitHub主页链接】" target="_blank">查看我的代码仓库</a></p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="contact-info">
+                                        <div class="contact-icon">
+                                            <i class="bi-file-earmark-text"></i>
+                                        </div>
+                                        <div>
+                                            <h5>在线简历</h5>
+                                            <p><a href="【你的在线简历链接】" target="_blank">查看完整简历</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-5 text-center">
+                                <h5>作品集访问地址</h5>
+                                <p class="text-muted">https://你的用户名.github.io</p>
+                                <p class="small text-muted">最后更新：2024年7月</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- 页脚 -->
-    <footer class="bg-dark text-white text-center py-4">
+    <footer class="footer">
         <div class="container">
-            <p class="mb-0">© 2024 肖轶悦. 作品集页面基于 Bootstrap 构建。</p>
-            <p class="mb-0">
-                访问地址：
-                <a href="https://你的用户名.github.io" class="link-light">https://你的用户名.github.io</a>
-                | 最后更新于 2024年7月
-            </p>
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <h4>肖轶悦</h4>
+                    <p>数字媒体艺术专业 · 游戏开发 · 视频创作</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p>© 2024 肖轶悦. 保留所有权利。</p>
+                    <p>本作品集使用 Bootstrap 5 构建，通过 GitHub Pages 托管。</p>
+                </div>
+            </div>
+            
+            <div class="social-links">
+                <a href="【你的B站链接】" class="social-link" target="_blank">
+                    <i class="bi-bilibili"></i>
+                </a>
+                <a href="【你的GitHub链接】" class="social-link" target="_blank">
+                    <i class="bi-github"></i>
+                </a>
+                <a href="mailto:2564824725@qq.com" class="social-link">
+                    <i class="bi-envelope"></i>
+                </a>
+            </div>
         </div>
     </footer>
 
-    <!-- Bootstrap JavaScript 文件 (用于导航栏等组件的交互) -->
+    <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- 平滑滚动脚本 -->
+    <script>
+        // 平滑滚动到锚点
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar-custom');
+            if (window.scrollY > 100) {
+                navbar.style.backgroundColor = 'rgba(15, 23, 42, 0.98)';
+                navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
+            } else {
+                navbar.style.backgroundColor = 'rgba(15, 23, 42, 0.95)';
+                navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            }
+        });
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 页面加载后触发滚动事件以设置初始导航栏状态
+            window.dispatchEvent(new Event('scroll'));
+        });
+    </script>
 </body>
 </html>
