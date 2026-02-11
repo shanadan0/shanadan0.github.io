@@ -359,6 +359,362 @@
                 padding-top: 1rem;
             }
         }
+
+        /* ========== 首页高级设计专用样式 ========== */
+.hero-section {
+    position: relative;
+    background: radial-gradient(circle at 10% 30%, rgba(139,92,246,0.15) 0%, rgba(59,130,246,0.15) 100%),
+                linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-blue) 100%);
+    overflow: hidden;
+}
+
+/* 粒子背景 */
+.hero-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 40%, rgba(255,255,255,0.1) 1px, transparent 1px),
+        radial-gradient(circle at 80% 70%, rgba(255,255,255,0.1) 1px, transparent 1px),
+        radial-gradient(circle at 40% 90%, rgba(255,255,255,0.08) 2px, transparent 2px),
+        radial-gradient(circle at 90% 20%, rgba(255,255,255,0.08) 2px, transparent 2px);
+    background-size: 60px 60px, 80px 80px, 100px 100px, 120px 120px;
+    animation: particleMove 30s linear infinite;
+    opacity: 0.6;
+}
+
+@keyframes particleMove {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(-30px) rotate(1deg); }
+}
+
+/* 渐变徽章 */
+.gradient-badge {
+    display: inline-block;
+    padding: 0.5rem 1.2rem;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50px;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* 动态打字区域 */
+.hero-typed-wrapper {
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem;
+}
+
+.hero-static-text {
+    background: linear-gradient(90deg, #ffffff, #e0e7ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-typed-text {
+    background: linear-gradient(90deg, #FFD700, #FFA500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+}
+
+.hero-typed-text::after {
+    content: "|";
+    font-weight: 400;
+    color: white;
+    margin-left: 2px;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* 描述文本 */
+.hero-description {
+    font-size: 1.25rem;
+    color: rgba(255,255,255,0.9);
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+/* 高级技能标签 */
+.hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+}
+
+.hero-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1.2rem;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 50px;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.hero-tag i {
+    font-size: 1rem;
+    margin-right: 6px;
+    color: rgba(255,255,255,0.9);
+}
+
+.hero-tag:hover {
+    background: rgba(255,255,255,0.2);
+    border-color: rgba(255,255,255,0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* 双按钮设计 */
+.btn-hero {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.9rem 2.2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    border: none;
+    letter-spacing: 0.5px;
+}
+
+.btn-hero-primary {
+    background: white;
+    color: var(--primary-purple);
+    box-shadow: 0 10px 25px rgba(139,92,246,0.3);
+}
+
+.btn-hero-primary:hover {
+    background: linear-gradient(90deg, #f9fafb, #ffffff);
+    transform: translateY(-3px);
+    box-shadow: 0 18px 30px rgba(139,92,246,0.4);
+    color: var(--primary-purple);
+}
+
+.btn-hero-outline {
+    background: transparent;
+    color: white;
+    border: 1.5px solid rgba(255,255,255,0.4);
+    backdrop-filter: blur(8px);
+}
+
+.btn-hero-outline:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* 右侧视觉卡片 */
+.hero-visual {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-card-glow {
+    position: relative;
+    width: 320px;
+    height: 380px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 25px 50px -8px rgba(0,0,0,0.3);
+    overflow: hidden;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+.hero-card-inner {
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-avatar {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    border: 3px solid rgba(255,255,255,0.3);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.hero-avatar i {
+    font-size: 3.5rem;
+    color: white;
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2));
+}
+
+.hero-card-stats {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.stat-item {
+    text-align: center;
+    color: white;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 800;
+    line-height: 1.2;
+    background: linear-gradient(90deg, #FFFFFF, #E2E8F0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    letter-spacing: 1px;
+}
+
+.hero-card-decoration {
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.hero-shape-circle {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(139,92,246,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(40px);
+    animation: pulse 8s ease-in-out infinite;
+}
+
+.hero-shape-dots {
+    position: absolute;
+    bottom: 15%;
+    right: 10%;
+    width: 150px;
+    height: 150px;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.15) 2px, transparent 2px);
+    background-size: 20px 20px;
+    opacity: 0.4;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.2); opacity: 0.8; }
+}
+
+/* 滚动提示 */
+.hero-scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    animation: bounce 2s infinite;
+    z-index: 10;
+}
+
+.hero-scroll-indicator i {
+    font-size: 1.4rem;
+    margin-top: 5px;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+    40% { transform: translateX(-50%) translateY(-10px); }
+    60% { transform: translateX(-50%) translateY(-5px); }
+}
+
+/* 响应式优化 */
+@media (max-width: 991px) {
+    .hero-typed-wrapper {
+        font-size: 1.8rem;
+        justify-content: center;
+    }
+    .hero-description {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .hero-buttons {
+        justify-content: center;
+    }
+    .hero-scroll-indicator {
+        bottom: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    .hero-typed-wrapper {
+        font-size: 1.5rem;
+    }
+    .btn-hero {
+        padding: 0.7rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -407,28 +763,96 @@
         </div>
     </nav>
 
-    <!-- 首页/英雄区域 -->
-    <section id="home" class="hero-section">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">肖轶悦</h1>
-                <p class="hero-subtitle">数字媒体艺术专业 | 游戏开发者 | 视频创作者 | 新媒体运营</p>
-                <div class="mt-4">
-                    <span class="badge bg-light text-dark me-1">Unreal Engine 5</span>
-                    <span class="badge bg-light text-dark me-1">Unity</span>
-                    <span class="badge bg-light text-dark me-1">游戏策划</span>
-                    <span class="badge bg-light text-dark me-1">3D建模</span>
-                    <span class="badge bg-light text-dark me-1">视频剪辑</span>
-                    <span class="badge bg-light text-dark me-1">AI创作</span>
-                    <span class="badge bg-light text-dark me-1">新媒体运营</span>
+   <!-- 首页/英雄区域 - 全新高级设计 -->
+<section id="home" class="hero-section">
+    <div class="hero-particles"></div> <!-- 动态粒子背景 -->
+    <div class="container position-relative z-3">
+        <div class="row align-items-center min-vh-100 py-5">
+            <!-- 左侧：文本内容 -->
+            <div class="col-lg-8 col-xl-7 text-center text-lg-start">
+                <!-- 欢迎语 + 动态打字效果 -->
+                <div class="hero-badge mb-3">
+                    <span class="gradient-badge">
+                        <i class="bi-stars me-2"></i>数字媒体艺术 · 2022届
+                    </span>
                 </div>
-                <div class="mt-5">
-                    <a href="#game-demos" class="btn btn-lg btn-light me-3">查看作品</a>
-                    <a href="#contact" class="btn btn-lg btn-light me-3">联系我</a>
+                
+                <h1 class="hero-title">
+                    肖轶悦
+                    <span class="hero-title-accent"></span>
+                </h1>
+                
+                <div class="hero-typed-wrapper mb-4">
+                    <span class="hero-static-text">我创造</span>
+                    <span class="hero-typed-text" id="typed-text"></span>
+                </div>
+                
+                <p class="hero-description">
+                    游戏开发 · 视频创作 · 新媒体运营<br>
+                    
+                </p>
+
+                <!-- 技能标签（高级渐变悬浮款） -->
+                <div class="hero-tags mt-4 mb-5">
+                    <span class="hero-tag"><i class="bi-controller me-1"></i>游戏引擎</span>
+                    <span class="hero-tag"><i class="bi-cpu me-1"></i>Unity</span>
+                    <span class="hero-tag"><i class="bi-pencil-fill me-1"></i>游戏策划</span>
+                    <span class="hero-tag"><i class="bi-boxes me-1"></i>3D建模</span>
+                    <span class="hero-tag"><i class="bi-camera-reels me-1"></i>视频剪辑</span>
+                    <span class="hero-tag"><i class="bi-magic me-1"></i>AI创作</span>
+                    <span class="hero-tag"><i class="bi-bar-chart-steps me-1"></i>新媒体运营</span>
+                </div>
+
+                <!-- 双按钮（带图标/渐变/阴影） -->
+                <div class="hero-buttons d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
+                    <a href="#game-demos" class="btn-hero btn-hero-primary">
+                        <i class="bi-joystick me-2"></i>查看作品
+                        <i class="bi-arrow-right-short ms-1"></i>
+                    </a>
+                    <a href="#contact" class="btn-hero btn-hero-outline">
+                        <i class="bi-chat-dots me-2"></i>联系我
+                    </a>
+                </div>
+            </div>
+
+            <!-- 右侧：个人标识/3D动效卡片（纯CSS视觉） -->
+            <div class="col-lg-4 col-xl-5 d-none d-lg-block">
+                <div class="hero-visual">
+                    <div class="hero-shape-circle"></div>
+                    <div class="hero-shape-dots"></div>
+                    <div class="hero-card-glow">
+                        <div class="hero-card-inner">
+                            <div class="hero-avatar">
+                                <i class="bi-controller"></i>
+                            </div>
+                            <div class="hero-card-stats">
+                                <div class="stat-item">
+                                    <span class="stat-value">6+</span>
+                                    <span class="stat-label">游戏Demo</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value">130+</span>
+                                    <span class="stat-label">视频作品</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value">42w+</span>
+                                    <span class="stat-label">总播放</span>
+                                </div>
+                            </div>
+                            <div class="hero-card-decoration"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+
+    <!-- 滚动提示 -->
+    <div class="hero-scroll-indicator">
+        <span class="scroll-text">向下滚动</span>
+        <i class="bi-arrow-down-short"></i>
+    </div>
+</section>
 
 <!-- 游戏Demo区域 -->
 <section id="game-demos" class="content-section">
@@ -498,7 +922,9 @@
                             <ul>
                                 <li><strong>2025（第十三届）CMIT全国大学生数字媒体科技作品及创意竞赛 全国总决赛 三等奖</strong></li>
                                 <li><strong>2025（第十三届）CMIT全国大学生数字媒体科技作品及创意竞赛 吉林赛区 二等奖</strong></li>
+                                <li>参展新媒体学院2025届本科及研究生优秀毕业作品展</li>
                                 <li>游戏将打字训练与烹饪流程深度绑定，实现"娱乐中练技能，体验中长能力"的设计目标</li>
+
                             </ul>
                         </div>
                     </div>
@@ -560,6 +986,7 @@
                         <div class="mt-3">
                             <p><strong>成果与特色：</strong></p>
                             <ul>
+                                <li>参展新媒体学院2025届本科及研究生优秀毕业作品展</li>
                                 <li>完整的实现了经营、成长、游戏支付程序等系统</li>
                             </ul>
                         </div>
@@ -1522,93 +1949,504 @@
     }
 </style>
 
-    <!-- 获奖证书区域 -->
-    <section id="certificates" class="content-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">获奖与证书</h2>
-                <p class="section-subtitle">在校期间获得的奖项、证书与荣誉</p>
+<!-- 获奖与证书区域 - 按类别陈列 -->
+<section id="certificates" class="content-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">获奖与证书</h2>
+           
+            <!-- 新增：类别气泡说明 + 英语四级 -->
+            <div class="cert-category-tags mt-3">
+                <span class="category-tag">🏆 参赛作品 & 参展</span>
+                <span class="category-tag">📜 校内荣誉</span>
+                <span class="category-tag">🎭 校园活动</span>
+                <span class="category-tag">🤝 志愿服务</span>
+                <span class="category-tag">📘 英语四级 (CET-4)</span>
             </div>
-            
+        </div>
+
+        <!-- ===== 类别1：参赛作品及参展证书 ===== -->
+        <div class="cert-category">
+            <div class="d-flex align-items-center mb-4">
+                <div class="category-icon">
+                    <i class="bi-trophy-fill"></i>
+                </div>
+                <h3 class="category-title mb-0">🏆 参赛作品 & 参展证书</h3>
+            </div>
             <div class="row g-4">
-                <!-- 证书1 -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="portfolio-card">
-                        <div class="card-body text-center">
-                            <div class="mb-3">
-                                <i class="bi-trophy-fill" style="font-size: 3rem; color: #FFD700;"></i>
-                            </div>
-                            <h5>2022学年校一等奖学金</h5>
-                            <p class="text-muted">吉林艺术学院</p>
-                            <p>表彰学业成绩优异，位列专业前5%</p>
+                <!-- 1. CMIT 全国总决赛三等奖 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="cert-card">
+                        <div class="cert-img-wrapper">
+                            <img src="https://cdn.jsdelivr.net/gh/shanadan0/shanadan0.github.io@main/images/cmit%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E6%95%B0%E5%AD%97%E5%AA%92%E4%BD%93%E7%A7%91%E6%8A%80%E4%BD%9C%E5%93%81%E5%8F%8A%E5%88%9B%E6%84%8F%E7%AB%9E%E8%B5%9B%E5%85%A8%E5%9B%BD%E6%80%BB%E5%86%B3%E8%B5%9B%E4%B8%89%E7%AD%89%E5%A5%96.jpg" alt="CMIT全国总决赛三等奖" class="cert-img">
+                        </div>
+                        <div class="cert-info">
+                            <h4 class="cert-name">全国大学生数字媒体科技作品及创意竞赛</h4>
+                            <p class="cert-detail"><span class="cert-level">全国总决赛 三等奖</span> · 2025</p>
+                            <p class="cert-desc">获奖作品：《字速厨房》</p>
                         </div>
                     </div>
                 </div>
-                
-                <!-- 证书2 -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="portfolio-card">
-                        <div class="card-body text-center">
-                            <div class="mb-3">
-                                <i class="bi-award-fill" style="font-size: 3rem; color: var(--primary-purple);"></i>
-                            </div>
-                            <h5>2022学年优秀班干部</h5>
-                            <p class="text-muted">吉林艺术学院</p>
-                            <p>担任22级新媒体娱乐一班班长，工作获得认可</p>
+                <!-- 2. CMIT 吉林省赛二等奖 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="cert-card">
+                        <div class="cert-img-wrapper">
+                            <img src="https://cdn.jsdelivr.net/gh/shanadan0/shanadan0.github.io@main/images/cmit%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E6%95%B0%E5%AD%97%E5%AA%92%E4%BD%93%E7%A7%91%E6%8A%80%E4%BD%9C%E5%93%81%E5%8F%8A%E5%88%9B%E6%84%8F%E7%AB%9E%E8%B5%9B%E5%90%89%E6%9E%97%E7%9C%81%E8%B5%9B%E4%BA%8C%E7%AD%89%E5%A5%96.jpg" alt="CMIT吉林省赛二等奖" class="cert-img">
+                        </div>
+                        <div class="cert-info">
+                            <h4 class="cert-name">全国大学生数字媒体科技作品及创意竞赛</h4>
+                            <p class="cert-detail"><span class="cert-level">吉林赛区 二等奖</span> · 2025</p>
+                            <p class="cert-desc">获奖作品：《字速厨房》</p>
                         </div>
                     </div>
                 </div>
-                
-                <!-- 证书3 -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="portfolio-card">
-                        <div class="card-body text-center">
-                            <div class="mb-3">
-                                <i class="bi-heart-fill" style="font-size: 3rem; color: #FF6B6B;"></i>
-                            </div>
-                            <h5>星语阳光优秀志愿者</h5>
-                            <p class="text-muted">美术学院</p>
-                            <p>积极参与志愿活动，服务时长累计80+小时</p>
+                <!-- 3. 元梦之星最佳创意玩法奖 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="cert-card">
+                        <div class="cert-img-wrapper">
+                            <img src="https://cdn.jsdelivr.net/gh/shanadan0/shanadan0.github.io@main/images/%E5%85%83%E6%A2%A6%E4%B9%8B%E6%98%9F%E6%9C%80%E4%BD%B3%E5%88%9B%E6%84%8F%E7%8E%A9%E6%B3%95%E5%A5%96.jpg" alt="元梦之星最佳创意玩法奖" class="cert-img">
+                        </div>
+                        <div class="cert-info">
+                            <h4 class="cert-name">《元梦之星》第二届全国高校游戏创意大赛</h4>
+                            <p class="cert-detail"><span class="cert-level">UGC创意赛道 · 最佳创意玩法奖</span> · 2025</p>
+                            <p class="cert-desc">获奖地图：《拜月记：戏剧台前幕后》</p>
                         </div>
                     </div>
                 </div>
-                
-                <!-- 证书4 -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="portfolio-card">
-                        <div class="card-body text-center">
+                <!-- 4. 未来设计师大赛吉林省一等奖 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="cert-card">
+                        <div class="cert-img-wrapper">
+                            <img src="https://cdn.jsdelivr.net/gh/shanadan0/shanadan0.github.io@main/images/%E7%AC%AC%E5%8D%81%E4%B8%89%E5%B1%8A%E6%9C%AA%E6%9D%A5%E8%AE%BE%E8%AE%A1%E5%B8%88%E5%A4%A7%E8%B5%9B%E5%90%89%E6%9E%97%E7%9C%81%E4%B8%80%E7%AD%89%E5%A5%96.png" alt="未来设计师大赛吉林省一等奖" class="cert-img">
+                        </div>
+                        <div class="cert-info">
+                            <h4 class="cert-name">第13届未来设计师·全国高校数字艺术设计大赛</h4>
+                            <p class="cert-detail"><span class="cert-level">吉林赛区 一等奖</span> · 2025</p>
+                            <p class="cert-desc">获奖作品：《蛞蝓猫猫SlugCat》</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 5. 数字艺术双研展参展证书 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="cert-card">
+                        <div class="cert-img-wrapper">
+                            <img src="https://cdn.jsdelivr.net/gh/shanadan0/shanadan0.github.io@main/images/%E6%95%B0%E5%AD%97%E8%89%BA%E6%9C%AF%E5%8F%8C%E7%A0%94%E5%B1%95%E5%8F%82%E5%B1%95%E8%AF%81%E4%B9%A6.jpg" alt="数字艺术双研展参展证书" class="cert-img">
+                        </div>
+                        <div class="cert-info">
+                            <h4 class="cert-name">吉林艺术学院数字艺术双研展</h4>
+                            <p class="cert-detail"><span class="cert-level">参展证书</span> · 2024</p>
+                            <p class="cert-desc">参展作品：《结构幻境：空间艺术的新维度》</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 6. 75周年文艺演出参演证书 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="cert-card">
+                        <div class="cert-img-wrapper">
+                            <img src="https://cdn.jsdelivr.net/gh/shanadan0/shanadan0.github.io@main/images/%E5%90%89%E6%9E%97%E8%89%BA%E6%9C%AF%E5%AD%A6%E9%99%A2%E5%BA%86%E7%A5%9D%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E6%88%90%E7%AB%8B75%E5%91%A8%E5%B9%B4%E6%96%87%E8%89%BA%E6%BC%94%E5%87%BA%E5%8F%82%E6%BC%94%E8%AF%81%E4%B9%A6.jpg" alt="75周年文艺演出参演证书" class="cert-img">
+                        </div>
+                        <div class="cert-info">
+                            <h4 class="cert-name">吉林艺术学院庆祝中华人民共和国成立75周年文艺演出</h4>
+                            <p class="cert-detail"><span class="cert-level">参演证书</span> · 2024</p>
+                            <p class="cert-desc">参演节目：《春风十万里》· 视频背景设计</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== 类别2：校内荣誉证书 ===== -->
+        <div class="cert-category mt-5">
+            <div class="d-flex align-items-center mb-4">
+                <div class="category-icon">
+                    <i class="bi-award-fill"></i>
+                </div>
+                <h3 class="category-title mb-0">📜 校内荣誉</h3>
+            </div>
+            <div class="row g-4">
+                <!-- 1. 2024年优秀学生干部 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="cert-card">
+                        <div class="cert-img-wrapper">
+                            <img src="https://cdn.jsdelivr.net/gh/shanadan0/shanadan0.github.io@main/images/2024%E5%B9%B4%E4%BC%98%E7%A7%80%E5%AD%A6%E7%94%9F%E5%B9%B2%E9%83%A8.jpg" alt="2024年优秀学生干部" class="cert-img">
+                        </div>
+                        <div class="cert-info">
+                            <h4 class="cert-name">优秀学生干部</h4>
+                            <p class="cert-detail"><span class="cert-level">2024年度</span> · 吉林艺术学院</p>
+                            <p class="cert-desc">担任2022级新媒体娱乐一班班长</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 2. 2022-2023优秀学生干部 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="cert-card">
+                        <div class="cert-img-wrapper">
+                            <img src="https://cdn.jsdelivr.net/gh/shanadan0/shanadan0.github.io@main/images/2022%E5%B9%B4%E8%87%B32023%E4%BC%98%E7%A7%80%E5%AD%A6%E7%94%9F%E5%B9%B2%E9%83%A8.jpg" alt="2022-2023优秀学生干部" class="cert-img">
+                        </div>
+                        <div class="cert-info">
+                            <h4 class="cert-name">优秀学生干部</h4>
+                            <p class="cert-detail"><span class="cert-level">2022-2023学年</span> · 吉林艺术学院</p>
+                            <p class="cert-desc">担任2022级新媒体娱乐一班班长</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 3. 2022-2023学院奖学金 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="cert-card">
+                        <div class="cert-img-wrapper">
+                            <img src="https://cdn.jsdelivr.net/gh/shanadan0/shanadan0.github.io@main/images/2022%E5%B9%B4%E8%87%B32023%E5%B9%B4%E5%AD%A6%E9%99%A2%E5%A5%96%E5%AD%A6%E9%87%91.jpg" alt="2022-2023学院奖学金" class="cert-img">
+                        </div>
+                        <div class="cert-info">
+                            <h4 class="cert-name">学院奖学金</h4>
+                            <p class="cert-detail"><span class="cert-level">2022-2023学年</span> · 吉林艺术学院</p>
+                            <p class="cert-desc">学业成绩优异，位列专业前5%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 未下发证书占位说明 -->
+            <div class="cert-placeholder mt-3">
+                <p class="text-muted mb-0"><i class="bi-info-circle me-2"></i>2025年优秀学生干部、吉林省奖学金证书待学校下发后补充。</p>
+            </div>
+        </div>
+
+        <!-- ===== 类别3：其他校园活动 ===== -->
+        <div class="cert-category mt-5">
+            <div class="d-flex align-items-center mb-4">
+                <div class="category-icon">
+                    <i class="bi-people-fill"></i>
+                </div>
+                <h3 class="category-title mb-0">🎭 校园活动</h3>
+            </div>
+            <div class="row g-4">
+                <!-- 1. 学院辩论赛优秀奖 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="cert-card">
+                        <div class="cert-img-wrapper">
+                            <img src="https://cdn.jsdelivr.net/gh/shanadan0/shanadan0.github.io@main/images/%E5%AD%A6%E9%99%A2%E8%BE%A9%E8%AE%BA%E8%B5%9B%E4%BC%98%E7%A7%80%E5%A5%96.jpg" alt="学院辩论赛优秀奖" class="cert-img">
+                        </div>
+                        <div class="cert-info">
+                            <h4 class="cert-name">学院辩论赛</h4>
+                            <p class="cert-detail"><span class="cert-level">优秀奖</span> · 新媒体学院</p>
+                            <p class="cert-desc">逻辑思辨与团队协作能力展现</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 2. 寝室设计大赛 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="cert-card">
+                        <div class="cert-img-wrapper">
+                            <img src="https://cdn.jsdelivr.net/gh/shanadan0/shanadan0.github.io@main/images/%E5%AF%9D%E5%AE%A4%E8%AE%BE%E8%AE%A1%E5%A4%A7%E8%B5%9B.jpg" alt="寝室设计大赛" class="cert-img">
+                        </div>
+                        <div class="cert-info">
+                            <h4 class="cert-name">寝室设计大赛</h4>
+                            <p class="cert-detail"><span class="cert-level">获奖证书</span> · 新媒体学院</p>
+                            <p class="cert-desc">创意空间设计与团队合作</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== 类别4：志愿服务与社会实践 ===== -->
+        <div class="cert-category mt-5">
+            <div class="d-flex align-items-center mb-4">
+                <div class="category-icon">
+                    <i class="bi-heart-fill"></i>
+                </div>
+                <h3 class="category-title mb-0">🤝 志愿服务</h3>
+            </div>
+            <div class="row g-4">
+                <!-- 1. 趣味心理运动会优秀志愿者 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="cert-card">
+                        <div class="cert-img-wrapper">
+                            <img src="https://cdn.jsdelivr.net/gh/shanadan0/shanadan0.github.io@main/images/%E5%90%89%E6%9E%97%E8%89%BA%E6%9C%AF%E5%AD%A6%E9%99%A2%E5%A4%A7%E5%AD%A6%E7%94%9F%E8%B6%A3%E5%91%B3%E5%BF%83%E7%90%86%E8%BF%90%E5%8A%A8%E4%BC%9A%E4%BC%98%E7%A7%80%E5%BF%97%E6%84%BF%E8%80%85.jpg" alt="趣味心理运动会优秀志愿者" class="cert-img">
+                        </div>
+                        <div class="cert-info">
+                            <h4 class="cert-name">大学生趣味心理运动会</h4>
+                            <p class="cert-detail"><span class="cert-level">优秀志愿者</span> · 吉林艺术学院</p>
+                            <p class="cert-desc">活动组织与现场服务贡献</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 2. 美术学院星语阳光优秀志愿者（证书） -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="cert-card">
+                        <div class="cert-img-wrapper">
+                            <img src="https://cdn.jsdelivr.net/gh/shanadan0/shanadan0.github.io@main/images/%E7%BE%8E%E6%9C%AF%E5%AD%A6%E9%99%A2%E6%98%9F%E8%AF%AD%E9%98%B3%E5%85%89%E4%BC%98%E7%A7%80%E5%BF%97%E6%84%BF%E8%80%85%E8%AF%81%E4%B9%A6.jpg" alt="星语阳光优秀志愿者证书" class="cert-img">
+                        </div>
+                        <div class="cert-info">
+                            <h4 class="cert-name">星语阳光志愿服务</h4>
+                            <p class="cert-detail"><span class="cert-level">优秀志愿者</span> · 美术学院</p>
+                            <p class="cert-desc">长期参与特殊儿童陪伴与艺术教学活动</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 3. “星语阳光”志愿服务证明 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="cert-card">
+                        <div class="cert-img-wrapper">
+                            <img src="https://cdn.jsdelivr.net/gh/shanadan0/shanadan0.github.io@main/images/%E2%80%9C%E6%98%9F%E8%AF%AD%E9%98%B3%E5%85%89%E2%80%9D%E5%BF%97%E6%84%BF%E6%9C%8D%E5%8A%A1%E8%AF%81%E6%98%8E.jpg" alt="星语阳光志愿服务证明" class="cert-img">
+                        </div>
+                        <div class="cert-info">
+                            <h4 class="cert-name">“星语阳光”志愿服务</h4>
+                            <p class="cert-detail"><span class="cert-level">服务证明</span> · 总共累计20+小时</p>
+                            <p class="cert-desc">持续性志愿活动，获项目组认可</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 4. 星语阳光优秀志愿者现场图片 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="cert-card">
+                        <div class="cert-img-wrapper">
+                            <img src="https://cdn.jsdelivr.net/gh/shanadan0/shanadan0.github.io@main/images/%E7%BE%8E%E6%9C%AF%E5%AD%A6%E9%99%A2%E6%98%9F%E8%AF%AD%E9%98%B3%E5%85%89%E4%BC%98%E7%A7%80%E5%BF%97%E6%84%BF%E8%80%85%E8%80%85%E7%8E%B0%E5%9C%BA%E5%9B%BE%E7%89%87.jpg" alt="星语阳光志愿服务现场" class="cert-img">
+                        </div>
+                        <div class="cert-info">
+                            <h4 class="cert-name">星语阳光志愿服务现场</h4>
+                            <p class="cert-detail"><span class="cert-level">活动纪实</span> · 美术学院</p>
+                            <p class="cert-desc">陪伴孩子们共同创作，传递温暖</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 5. 以文培元社团公益活动 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="cert-card">
+                        <div class="cert-img-wrapper">
+                            <img src="https://cdn.jsdelivr.net/gh/shanadan0/shanadan0.github.io@main/images/%E4%BB%A5%E6%96%87%E5%9F%B9%E5%85%83%E7%A4%BE%E5%9B%A2%E5%85%AC%E7%9B%8A%E6%B4%BB%E5%8A%A8.jpg" alt="以文培元社团公益活动" class="cert-img">
+                        </div>
+                        <div class="cert-info">
+                            <h4 class="cert-name">以文培元社团</h4>
+                            <p class="cert-detail"><span class="cert-level">公益活动</span> · 新媒体学院</p>
+                            <p class="cert-desc">文化传承类公益项目参与</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 6. 艺点爱志愿服务现场图片 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="cert-card">
+                        <div class="cert-img-wrapper">
+                            <img src="https://cdn.jsdelivr.net/gh/shanadan0/shanadan0.github.io@main/images/%E8%89%BA%E7%82%B9%E7%88%B1%E5%BF%97%E6%84%BF%E6%9C%8D%E5%8A%A1%E7%8E%B0%E5%9C%BA%E5%9B%BE%E7%89%87.jpg" alt="艺点爱志愿服务现场" class="cert-img">
+                        </div>
+                        <div class="cert-info">
+                            <h4 class="cert-name">艺点爱志愿服务</h4>
+                            <p class="cert-detail"><span class="cert-level">活动纪实</span> · 新媒体学院</p>
+                            <p class="cert-desc">艺术实践，用专业传递爱心</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 其他志愿服务经历说明 -->
+            <div class="cert-placeholder mt-3">
+                <p class="text-muted mb-0"><i class="bi-plus-circle me-2"></i>另有长春红十字会及其他社区志愿服务经历，证书及图片后续补充。</p>
+            </div>
+        </div>
+
+        <!-- 英语四级单独展示卡（无证书图片） -->
+        <div class="cert-category mt-5">
+            <div class="d-flex align-items-center mb-4">
+                <div class="category-icon">
+                    <i class="bi-translate"></i>
+                </div>
+                <h3 class="category-title mb-0">📘 语言能力</h3>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <div class="cert-card no-image-card">
+                        <div class="cert-info text-center py-4">
                             <div class="mb-3">
                                 <i class="bi-translate" style="font-size: 3rem; color: var(--primary-blue);"></i>
                             </div>
-                            <h5>大学英语四级 (CET-4)</h5>
-                            <p class="text-muted">全国大学英语四六级考试委员会</p>
-                            <p>具备良好的英语阅读与理解能力</p>
+                            <h4 class="cert-name">大学英语四级 (CET-4)</h4>
+                            <p class="cert-detail"><span class="cert-level">通过</span> · 全国大学英语四六级考试委员会</p>
+                            <p class="cert-desc">具备良好的英语阅读与理解能力</p>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <!-- 证书图片展示 -->
-            <div class="mt-5">
-                <h4 class="text-center mb-4">证书图片展示</h4>
-                <div class="row g-3">
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <img src="【证书图片1URL】" alt="校一等奖学金证书" class="certificate-img">
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <img src="【证书图片2URL】" alt="优秀班干部证书" class="certificate-img">
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <img src="【证书图片3URL】" alt="志愿者证书" class="certificate-img">
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <img src="【证书图片4URL】" alt="英语四级证书" class="certificate-img">
-                    </div>
-                </div>
-                <p class="text-center text-muted mt-3">更多获奖证书正在数字化整理中...</p>
-            </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<!-- 证书卡片专属样式（含新增气泡与四级卡片样式） -->
+<style>
+    /* 类别头部 */
+    .cert-category {
+        position: relative;
+    }
+    .category-icon {
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 16px;
+    }
+    .category-icon i {
+        font-size: 24px;
+        color: white;
+    }
+    .category-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        letter-spacing: 1px;
+    }
+
+    /* 新增：头部气泡标签 */
+    .cert-category-tags {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+    .category-tag {
+        display: inline-block;
+        padding: 8px 18px;
+        background: linear-gradient(135deg, rgba(139,92,246,0.08), rgba(59,130,246,0.08));
+        border: 1px solid rgba(139,92,246,0.2);
+        border-radius: 50px;
+        color: var(--primary-purple);
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        transition: all 0.2s;
+    }
+    .category-tag:hover {
+        background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+        color: white;
+        border-color: transparent;
+        transform: translateY(-2px);
+    }
+
+    /* 证书卡片 */
+    .cert-card {
+        background: white;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid rgba(226,232,240,0.6);
+    }
+    .cert-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 16px 30px rgba(139,92,246,0.12);
+        border-color: rgba(139,92,246,0.3);
+    }
+
+    /* 无图片卡片（如四级） */
+    .cert-card.no-image-card {
+        background: linear-gradient(145deg, #ffffff, #f9fafc);
+        border: 1px dashed var(--primary-purple);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .cert-card.no-image-card .cert-info {
+        padding: 2rem 1rem;
+    }
+
+    /* 图片区域 */
+    .cert-img-wrapper {
+        position: relative;
+        width: 100%;
+        padding-top: 75%;
+        background-color: #f8fafc;
+        overflow: hidden;
+    }
+    .cert-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+        padding: 12px;
+        transition: transform 0.3s;
+    }
+    .cert-card:hover .cert-img {
+        transform: scale(1.02);
+    }
+
+    /* 文字信息 */
+    .cert-info {
+        padding: 1.25rem 1.25rem 1.5rem;
+        background: white;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    .cert-name {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 0.4rem;
+        line-height: 1.4;
+    }
+    .cert-detail {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        margin-bottom: 0.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+    }
+    .cert-level {
+        background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 700;
+        display: inline-block;
+    }
+    .cert-desc {
+        font-size: 0.9rem;
+        color: #475569;
+        margin-bottom: 0;
+        border-top: 1px dashed #e2e8f0;
+        padding-top: 0.6rem;
+        margin-top: 0.2rem;
+    }
+
+    /* 占位提示 */
+    .cert-placeholder {
+        padding: 1rem 1.5rem;
+        background: rgba(139,92,246,0.04);
+        border-radius: 12px;
+        border-left: 4px solid var(--primary-purple);
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+    }
+
+    /* 响应式微调 */
+    @media (max-width: 768px) {
+        .category-title {
+            font-size: 1.5rem;
+        }
+        .cert-category-tags {
+            gap: 8px;
+        }
+        .category-tag {
+            padding: 6px 14px;
+            font-size: 0.85rem;
+        }
+        .cert-img-wrapper {
+            padding-top: 70%;
+        }
+        .cert-info {
+            padding: 1rem;
+        }
+        .cert-name {
+            font-size: 1rem;
+        }
+    }
+</style>
 
     <!-- 联系区域 -->
     <section id="contact" class="content-section">
@@ -1650,7 +2488,7 @@
                                         </div>
                                         <div>
                                             <h5>地址</h5>
-                                            <p>湖南省衡阳市石鼓区望城路</p>
+                                            <p>湖南省衡阳市石鼓区</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1658,11 +2496,11 @@
                                 <div class="col-md-6">
                                     <div class="contact-info">
                                         <div class="contact-icon">
-                                            <i class="bi-bilibili"></i>
+                                            <i class="bi bi-play"></i>
                                         </div>
                                         <div>
                                             <h5>B站主页</h5>
-                                            <p><a href="【你的B站主页链接】" target="_blank">嬗阿单 (38.3万播放)</a></p>
+                                            <p><a href="https://space.bilibili.com/524419812?spm_id_from=333.337.0.0](https://space.bilibili.com/524419812?spm_id_from=333.337.0.0" target="_blank">嬗阿单 </a></p>
                                         </div>
                                     </div>
                                     
@@ -1690,8 +2528,8 @@
                             
                             <div class="mt-5 text-center">
                                 <h5>作品集访问地址</h5>
-                                <p class="text-muted">https://你的用户名.github.io</p>
-                                <p class="small text-muted">最后更新：2024年7月</p>
+                                <p class="text-muted">https://shanadan0.github.io/</p>
+                                <p class="small text-muted">最后更新：2026年2月</p>
                             </div>
                         </div>
                     </div>
@@ -1709,16 +2547,16 @@
                     <p>数字媒体艺术专业 · 游戏开发 · 视频创作</p>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
-                    <p>© 2024 肖轶悦. 保留所有权利。</p>
+                    <p>© 2026 肖轶悦. 保留所有权利。</p>
                     <p>本作品集使用 Bootstrap 5 构建，通过 GitHub Pages 托管。</p>
                 </div>
             </div>
             
             <div class="social-links">
-                <a href="【你的B站链接】" class="social-link" target="_blank">
-                    <i class="bi-bilibili"></i>
+                <a href="https://space.bilibili.com/524419812?spm_id_from=333.337.0.0](https://space.bilibili.com/524419812?spm_id_from=333.337.0.0" class="social-link" target="_blank">
+                    <i class="bi bi-play"></i>
                 </a>
-                <a href="【你的GitHub链接】" class="social-link" target="_blank">
+                <a href="https://shanadan0.github.io" class="social-link" target="_blank">
                     <i class="bi-github"></i>
                 </a>
                 <a href="mailto:2564824725@qq.com" class="social-link">
@@ -1731,6 +2569,49 @@
     <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
+    <!-- 动态打字效果 -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 打字效果配置
+        const typedTextElement = document.getElementById('typed-text');
+        if (!typedTextElement) return;
+        
+        const words = ['游戏世界', '视觉艺术', '互动体验', '数字梦境'];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let currentText = '';
+
+        function typeEffect() {
+            const fullText = words[wordIndex];
+            
+            if (isDeleting) {
+                currentText = fullText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                currentText = fullText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            typedTextElement.textContent = currentText;
+
+            if (!isDeleting && charIndex === fullText.length) {
+                isDeleting = true;
+                setTimeout(typeEffect, 1500); // 停留1.5秒
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                setTimeout(typeEffect, 300);
+            } else {
+                const speed = isDeleting ? 50 : 100;
+                setTimeout(typeEffect, speed);
+            }
+        }
+
+        setTimeout(typeEffect, 1000);
+    });
+</script>
+
     <!-- 平滑滚动脚本 -->
     <script>
         // 平滑滚动到锚点
